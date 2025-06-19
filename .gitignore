@@ -1,0 +1,12 @@
+# Ignore dataset
+archive/
+
+# (Optional) Ignore all image types globally
+*.jpg
+*.jpeg
+*.png
+
+# Ignore checkpoints, cache, etc.
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
