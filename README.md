@@ -72,10 +72,11 @@ archive/
 ```bash
 git clone https://github.com/Brum99/MRI_brain_tumor_prediction.git
 cd MRI_brain_tumor_prediction
-
+```
 🧠 Author
 Samuel Peterson
 Machine Learning Engineer | LLM Evaluator | Data Scientist
+
 🌐 brum99.github.io
 
 📜 License
