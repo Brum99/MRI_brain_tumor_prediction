@@ -39,10 +39,23 @@ def get_dataframe_from_split_dirs(base_dir):
 
     return df
 
-def get_data_generators(train_df, val_df, test_df, data_dir, input_size=(299, 299), batch_size=32, seed=22):
+def prepare_generators(base_dir, input_size=(299, 299), batch_size=32, seed=22):
     """
-    Takes DataFrames and returns train, val, and test generators with fixed seed.
+    Combines dataframe creation, train/val/test split, and generator creation.
+
+    Returns:
+    - train_gen, val_gen, test_gen
+    - class_dict: label mapping
     """
+    df = get_dataframe_from_split_dirs(base_dir)
+
+    train_df = df[df['set'] == 'Training'].copy()
+    test_df = df[df['set'] == 'Testing'].copy()
+
+    train_data, val_data = train_test_split(
+        train_df, test_size=0.2, stratify=train_df['label'], random_state=seed
+    )
+
     datagen_train = ImageDataGenerator(
         rescale=1./255,
         rotation_range=10,
@@ -53,24 +66,26 @@ def get_data_generators(train_df, val_df, test_df, data_dir, input_size=(299, 29
     datagen_val_test = ImageDataGenerator(rescale=1./255)
 
     train_gen = datagen_train.flow_from_dataframe(
-        train_df, data_dir,
+        train_data, base_dir,
         x_col='filename', y_col='label',
         target_size=input_size, batch_size=batch_size,
         class_mode='categorical', shuffle=True, seed=seed
     )
 
     val_gen = datagen_val_test.flow_from_dataframe(
-        val_df, data_dir,
+        val_data, base_dir,
         x_col='filename', y_col='label',
         target_size=input_size, batch_size=batch_size,
         class_mode='categorical', shuffle=False
     )
 
     test_gen = datagen_val_test.flow_from_dataframe(
-        test_df, data_dir,
+        test_df, base_dir,
         x_col='filename', y_col='label',
         target_size=input_size, batch_size=batch_size,
         class_mode='categorical', shuffle=False
     )
 
-    return train_gen, val_gen, test_gen
+    class_dict = train_gen.class_indices
+
+    return train_gen, val_gen, test_gen, class_dict
