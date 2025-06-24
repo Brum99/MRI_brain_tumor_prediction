@@ -1,0 +1,18 @@
+Train Set
+Loss      : 0.2864
+Accuracy  : 89.58%
+Precision : 91.20%
+Recall    : 88.01%
+----------------------------------------
+Validation Set
+Loss      : 0.3216
+Accuracy  : 88.54%
+Precision : 90.03%
+Recall    : 86.88%
+----------------------------------------
+Test Set
+Loss      : 0.4821
+Accuracy  : 81.69%
+Precision : 83.44%
+Recall    : 79.56%
+----------------------------------------
