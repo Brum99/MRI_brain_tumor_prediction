@@ -73,6 +73,16 @@ archive/
 git clone https://github.com/Brum99/MRI_brain_tumor_prediction.git
 cd MRI_brain_tumor_prediction
 ```
+
+2. Open one of the training notebooks located in
+   `MRI_CNN_Architectures/notebooks/`:
+
+   - `xception_training.ipynb`
+   - `efficientnet_training.ipynb`
+   - `custom_cnn_training.ipynb`
+
+   Each notebook loads the data generators, builds the corresponding model
+   architecture, trains the network and saves evaluation plots.
 🧠 Author
 Samuel Peterson
 Machine Learning Engineer | LLM Evaluator | Data Scientist
