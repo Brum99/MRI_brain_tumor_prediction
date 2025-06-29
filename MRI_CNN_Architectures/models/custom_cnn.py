@@ -29,7 +29,7 @@ def _base_cnn(input_shape):
     return model
 
 
-def build_model(input_shape=(224, 224, 3), num_classes=4):
+def build_model(input_shape=(128, 128, 3), num_classes=4):
     """Builds a custom CNN classifier using the shared top layers."""
     base_model = _base_cnn(input_shape)
 

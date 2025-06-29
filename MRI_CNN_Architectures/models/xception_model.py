@@ -18,7 +18,7 @@ def build_model(input_shape=(224, 224, 3), num_classes=4):
     model = Sequential(
         [
             base_model,
-            Flatten(),
+            GlobalAveragePooling2D(),
             Dropout(0.3),
             Dense(128, activation="relu"),
             Dropout(0.25),

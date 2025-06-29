@@ -39,7 +39,7 @@ def get_dataframe_from_split_dirs(base_dir):
 
     return df
 
-def prepare_generators(base_dir, input_size=(299, 299), batch_size=32, seed=22):
+def prepare_generators(base_dir, input_size=(128, 128), batch_size=32, seed=22):
     """
     Combines dataframe creation, train/val/test split, and generator creation.
 
