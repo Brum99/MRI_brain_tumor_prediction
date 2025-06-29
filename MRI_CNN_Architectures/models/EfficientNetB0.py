@@ -5,7 +5,12 @@ from tensorflow.keras.optimizers import Adamax
 from tensorflow.keras.metrics import Precision, Recall
 
 def build_efficientnet_model(input_shape=(224, 224, 3), num_classes=4):
-    base_model = EfficientNetB0(include_top=False, weights='imagenet', input_shape=input_shape)
+    base_model = EfficientNetB0(
+        include_top=False, 
+        weights='imagenet', 
+        input_shape=input_shape,
+        
+        )
     base_model.trainable = False
 
     model = Sequential([
