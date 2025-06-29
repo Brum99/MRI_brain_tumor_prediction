@@ -1,6 +1,6 @@
 # Ignore dataset
 archive/
-
+.MRI_CNN_Architectures.zip
 # (Optional) Ignore all image types globally
 *.jpg
 *.jpeg
